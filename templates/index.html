@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rating prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f179b30ed1.js" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</head>
+<body>
+    <h1 class="mt-2">Scores predictor</h1>
+    <div class="row mt-4">
+        <div class="col col-1"></div>
+        <form id="predictForm" class="col col-4 ms-5 mt-1 me-4">
+            <label for="formateur">Instructor:</label>
+            <select id="formateur" name="formateur" required>
+                <option value="Noor Al-Harbi">Noor Al-Harbi</option>
+                <option value="Hassan Al-Subhi">Hassan Al-Subhi</option>
+                <option value="Amin Al-Juaied">Amin Al-Juaied</option>
+                <option value="Aisha Al-Shammari">Aisha Al-Shammari</option>
+                <option value="Fatima Al-Jamal">Fatima Al-Jamal</option>
+                <option value="Omar Al-Ghanim">Omar Al-Ghanim</option>
+                <option value="Mohammed Al-Badrani">Mohammed Al-Badrani</option>
+                <option value="Youssef Al-Abdullah">Youssef Al-Abdullah</option>
+                <option value="Sara Al-Otaibi">Sara Al-Otaibi</option>
+                <option value="Layla Al-Khalid">Layla Al-Khalid</option>
+            </select><br><br>
+            <label for="typef">Type:</label>
+            <select name="typef" id="typef" required>
+                <option value="0">Office</option>
+                <option value="1">Administrative</option>
+            </select><br><br>
+
+            <label for="duration">Duration (hours):</label>
+            <input type="number" id="duration" name="duration" min="1" required><br><br>
+
+            <label for="knowledge">Knowledge (1-5):</label>
+            <input type="number" id="knowledge" name="knowledge" min="1" max="5" required><br><br>
+
+            <label for="theme">Course name:</label>
+            <input type="text" id="theme" name="theme" required><br><br> <!-- Input for theme -->
+
+            <input type="submit" class="btn_submit" value="Predict">
+        </form>
+        <div class="col col-1"></div>
+        <div id="result" class="col col-4 mt-3">
+            <h2 class="predictionResults_header">Predicted Scores</h2>
+            <p id="cmnt"></p>
+            <p id="stars_rating"></p>
+            <p id="overall_score"></p>
+
+        </div>
+    </div>
+</body>
+</html>
