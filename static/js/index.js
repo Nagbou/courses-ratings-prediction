@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('form').on('submit', function (event) {
+    $('#predictForm').on('submit', function (event) {
         event.preventDefault(); // Prevent default form submission
         var formateur = $('#formateur').val();
         var typef = $('#typef').val();
@@ -18,8 +18,9 @@ $(document).ready(function () {
                 theme: theme // Include theme in the data sent to Flask
             },
             success: function (data) {
-                let score = (data.overall_score + data.stars_rating) / 2
-                let perc = Math.round((score * 100) / 5)
+                console.log("Response Data:", data); // Log response data
+                let score = (data.overall_score + data.stars_rating) / 2;
+                let perc = Math.round((score * 100) / 5);
                 if (score < 0.8) {
                     $('#cmnt').html(`
                         <p class="cmnt vertical_line">The odds of success for this course with Mr./Ms.
@@ -46,6 +47,9 @@ $(document).ready(function () {
                     <p class="predicted_values">${data.overall_score}</p>
                 `);
                 $('#result').show(); // Show result div
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX Error:", status, error); // Log AJAX error
             }
         });
     });
